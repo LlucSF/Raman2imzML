@@ -7,16 +7,16 @@
 write_ibd(imzML_path, file_name, clean_data, uuid)
 }
 \arguments{
-\item{imzML_path}{raw_data.}
+\item{imzML_path}{path to the folder where the imzML file is going to be stored..}
 
-\item{file_name}{raw_data.}
+\item{file_name}{name of the txt file or a new name.(currently the converter just copies the txt file name)}
 
-\item{clean_data}{raw_data.}
+\item{clean_data}{rearranged data structure.}
 
-\item{uuid}{raw_data.}
+\item{uuid}{uuid. This code must be shared between the imzMl file and the ibd file.}
 }
 \value{
-clean data.
+List containing the sha and the md5 of the ibd file.
 }
 \description{
 write_ibd

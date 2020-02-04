@@ -1,8 +1,8 @@
 #########################################################################
-#     Raman2imzML - Reinshaw's raman data in .txt format converter to 
+#     Raman2imzML - Reinshaws raman data in .txt format converter to 
 #                    imzML using rMSI's imzML creator source code.
 #
-#     Copyright (C) 2020 Lluc Sementé Fernández
+#     Copyright (C) 2020 Lluc Semente Fernandez
 #
 #     This program is free software: you can redistribute it and/or modify
 #     it under the terms of the GNU General Public License as published by
@@ -18,12 +18,16 @@
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ############################################################################
 
-#' convert: converts .txt files from Renishaw's raman instruments and transforms it into .imzML files 
+#' convert
 #' 
-#' @param txt_path path to the .txt file.
-#' @param imzML_path path to the folder where the .imzML file is going to be stored.
+#' Converts a txt files exported using WiRe 5.2 from Renishaw raman instruments and transforms it into an imzML file. The name
+#' of the imzML file is going to be the same as the txt file. Only WiRe 5.2 txt files have been tested. 
+#' 
+#' @param txt_path path to the txt file.
+#' @param imzML_path path to the folder where the imzML file is going to be stored.
 #'
 #' @return  TRUE if everything is alright.
+#'
 #' @export
 #'
 convert <- function(txt_path, imzML_path)
@@ -39,22 +43,22 @@ convert <- function(txt_path, imzML_path)
   rm(raw_data)
   
   #UUID generation, .ibd file creation and hash calculation 
-  uuid <- rMSI:::uuid_timebased()
+  uuid <- uuid_timebased()
   hash <- write_ibd(imzML_path, file_name, clean_data, uuid)
   clean_data$hash <- hash
   clean_data$hash$uuid <- uuid
   
   #Genereting the offset matrix and the .imzML file
   offset_matrix <- clean_2_offsetMatrix(clean_data)
-  return(CimzMLStore(paste(imzML_path, file_name, sep = ""), offset_matrix))
+  return(CimzMLStore(paste(imzML_path, file_name,".imzML", sep = ""), offset_matrix))
 }
 
 
 #' raw_2_clean
 #' 
-#' @param raw_data raw_data.
+#' @param raw_data data frame containing the raw data from the txt file.
 #'
-#' @return  clean data.
+#' @return  rearranged data to fit the processing pipeline. 
 #' 
 raw_2_clean <- function(raw_data)
 {
@@ -102,12 +106,12 @@ raw_2_clean <- function(raw_data)
 
 #' write_ibd
 #' 
-#' @param imzML_path raw_data.
-#' @param file_name raw_data.
-#' @param clean_data raw_data.
-#' @param uuid raw_data.
+#' @param imzML_path path to the folder where the imzML file is going to be stored..
+#' @param file_name name of the txt file or a new name.(currently the converter just copies the txt file name) 
+#' @param clean_data rearranged data structure.
+#' @param uuid uuid. This code must be shared between the imzMl file and the ibd file. 
 #' 
-#' @return  clean data.
+#' @return  List containing the sha and the md5 of the ibd file.
 #' 
 write_ibd <- function(imzML_path, file_name, clean_data, uuid)
 {
@@ -162,7 +166,6 @@ clean_2_offsetMatrix <- function(clean_data)
   )
   
   return(offMat)
-  
 }
 
 

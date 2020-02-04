@@ -2,18 +2,19 @@
 % Please edit documentation in R/raman2imzML.R
 \name{convert}
 \alias{convert}
-\title{convert: converts .txt files from Renishaw's raman instruments and transforms it into .imzML files}
+\title{convert}
 \usage{
 convert(txt_path, imzML_path)
 }
 \arguments{
-\item{txt_path}{path to the .txt file.}
+\item{txt_path}{path to the txt file.}
 
-\item{imzML_path}{path to the folder where the .imzML file is going to be stored.}
+\item{imzML_path}{path to the folder where the imzML file is going to be stored.}
 }
 \value{
 TRUE if everything is alright.
 }
 \description{
-convert: converts .txt files from Renishaw's raman instruments and transforms it into .imzML files
+Converts a txt files exported using WiRe 5.2 from Renishaw raman instruments and transforms it into an imzML file. The name
+of the imzML file is going to be the same as the txt file. Only WiRe 5.2 txt files have been tested.
 }

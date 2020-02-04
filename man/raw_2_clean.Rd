@@ -7,10 +7,10 @@
 raw_2_clean(raw_data)
 }
 \arguments{
-\item{raw_data}{raw_data.}
+\item{raw_data}{data frame containing the raw data from the txt file.}
 }
 \value{
-clean data.
+rearranged data to fit the processing pipeline.
 }
 \description{
 raw_2_clean
