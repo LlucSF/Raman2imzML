@@ -32,10 +32,16 @@
 #'
 convert <- function(txt_path, imzML_path)
 {
-  #Get file name
+  #Get file name and check if imzML directory exists, if not, create it.
   file_name <- unlist(strsplit(txt_path, split = "/"))
   file_name <- file_name[length(file_name)]
   file_name <- unlist(strsplit(file_name,split = ".txt"))
+  
+  if(!dir.exists(imzML_path))
+  {
+    dir.create(imzML_path)
+  }
+  
   
   #Raw data read and cleaning 
   raw_data <- as.data.frame(utils::read.table(file = txt_path, header = FALSE))
