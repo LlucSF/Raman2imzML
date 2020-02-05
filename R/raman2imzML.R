@@ -24,25 +24,21 @@
 #' of the imzML file is going to be the same as the txt file. Only WiRe 5.2 txt files have been tested. 
 #' 
 #' @param txt_path path to the txt file.
-#' @param imzML_path path to the folder where the imzML file is going to be stored.
+#' @param imzML_path path to the folder where the imzML file is going to be stored. By default the same as the text file.
 #'
 #' @return  TRUE if everything is alright.
 #'
 #' @export
 #'
-convert <- function(txt_path, imzML_path)
+convert <- function(txt_path, imzML_path = NULL)
 {
   #Get file name and check if imzML directory exists, if not, create it.
-  file_name <- unlist(strsplit(txt_path, split = "/"))
-  file_name <- file_name[length(file_name)]
-  file_name <- unlist(strsplit(file_name,split = ".txt"))
+  txt_path <- path.expand(txt_path) #path expansion to ensure proper work
+  file_name <- unlist(strsplit(basename(file_name), split = ".txt"))
   
-  if(!dir.exists(imzML_path))
-  {
-    dir.create(imzML_path)
-  }
-  
-  
+  if(is.null(imzML_path)) imzML_path <- txt_path # Default path is the same as the txt file
+   else if(!dir.exists(imzML_path)) dir.create(imzML_path) # Create folder if it does not exist.
+
   #Raw data read and cleaning 
   raw_data <- as.data.frame(utils::read.table(file = txt_path, header = FALSE))
   clean_data <- raw_2_clean(raw_data)
@@ -56,6 +52,8 @@ convert <- function(txt_path, imzML_path)
   
   #Genereting the offset matrix and the .imzML file
   offset_matrix <- clean_2_offsetMatrix(clean_data)
+  rm(clean_data)
+  
   return(CimzMLStore(paste(imzML_path, file_name,".imzML", sep = ""), offset_matrix))
 }
 
@@ -121,7 +119,7 @@ raw_2_clean <- function(raw_data)
 #' 
 write_ibd <- function(imzML_path, file_name, clean_data, uuid)
 {
-  ibd_path <- paste(imzML_path,file_name,".ibd",sep = "")
+  ibd_path <- paste(path.expand(imzML_path),file_name,".ibd",sep = "")
   intUUID <- strtoi(substring(uuid, seq(1,nchar(uuid),2), seq(2,nchar(uuid),2)), base = 16)
   
   if (file.create(ibd_path))
