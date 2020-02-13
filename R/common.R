@@ -18,6 +18,13 @@
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ############################################################################
 
+#' Automotise NAMESPACE
+#' 
+#' @importFrom Rcpp evalCpp
+#' @useDynLib Raman2imzML, .registration = TRUE
+NULL
+
+
 #' Read clean data, generates the binary file and computes the hash. 
 #' 
 #' @param imzML_path path to the folder where the imzML file is going to be stored.

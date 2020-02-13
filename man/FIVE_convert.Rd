@@ -7,21 +7,21 @@
 FIVE_convert(
   info_txt_path,
   table_txt_path,
-  spectrum_txt_path,
+  spectrum_txt_path = NULL,
   imzML_path = NULL,
   file_name = NULL
 )
 }
 \arguments{
-\item{info_txt_path}{path to the txt file contaiting the information of the adquisition.}
+\item{info_txt_path}{path to the text file contaiting the information of the adquisition.}
 
-\item{table_txt_path}{path to the txt file contaiting all spectra as a table.}
+\item{table_txt_path}{path to the text file contaiting all spectra as a table.}
 
-\item{spectrum_txt_path}{path to the txt file contaiting one independent spectrum.}
+\item{spectrum_txt_path}{(optional) path to the text file contaiting one independent spectrum to correct the raman shift axis in the table text file.}
 
-\item{imzML_path}{path to the folder where the imzML file is going to be stored. By default the same as the table text file.}
+\item{imzML_path}{(optional) path to the folder where the imzML file is going to be stored. By default the same as the table text file.}
 
-\item{file_name}{name of the imzML file. By default the same as the table text file.}
+\item{file_name}{(optional) name of the imzML file. By default the same as the table text file.}
 }
 \value{
 complete path of the imzML file.

@@ -7,11 +7,11 @@
 WiRe_convert(txt_path, imzML_path = NULL, file_name = NULL)
 }
 \arguments{
-\item{txt_path}{path to the txt file.}
+\item{txt_path}{path to the text file.}
 
-\item{imzML_path}{path to the folder where the imzML file is going to be stored. By default the same as the text file.}
+\item{imzML_path}{(optional) path to the folder where the imzML file is going to be stored. By default the same as the text file.}
 
-\item{file_name}{name of the imzML file. By default the same as txt file.}
+\item{file_name}{(optional) name of the imzML file. By default the same as text file.}
 }
 \value{
 complete path of the imzML file.

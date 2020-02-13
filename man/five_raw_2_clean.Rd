@@ -7,7 +7,7 @@
 five_raw_2_clean(raw_data, info, spect)
 }
 \arguments{
-\item{raw_five}{data frame containing the raw data from the txt file.}
+\item{raw_five}{data frame containing the raw data from the text file.}
 }
 \value{
 clean data.

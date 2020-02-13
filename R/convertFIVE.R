@@ -24,27 +24,35 @@
 #' Converts a text files exported using FIVE 5.1 from WiTec raman instruments and transforms it into an imzML file. The name
 #' of the imzML file is going to be the same as the table txt file. Only FIVE 5.1 text files have been tested. 
 #' 
-#' @param info_txt_path path to the txt file contaiting the information of the adquisition.
-#' @param table_txt_path path to the txt file contaiting all spectra as a table.
-#' @param spectrum_txt_path path to the txt file contaiting one independent spectrum.
-#' @param imzML_path path to the folder where the imzML file is going to be stored. By default the same as the table text file.
-#' @param file_name name of the imzML file. By default the same as the table text file.
+#' @param info_txt_path path to the text file contaiting the information of the adquisition.
+#' @param table_txt_path path to the text file contaiting all spectra as a table.
+#' @param spectrum_txt_path (optional) path to the text file contaiting one independent spectrum to correct the raman shift axis in the table text file.
+#' @param imzML_path (optional) path to the folder where the imzML file is going to be stored. By default the same as the table text file.
+#' @param file_name (optional) name of the imzML file. By default the same as the table text file.
 #'
 #' @return  complete path of the imzML file.
 #'
 #' @export
 #'
-FIVE_convert <- function(info_txt_path, table_txt_path, spectrum_txt_path, imzML_path = NULL, file_name = NULL)
+FIVE_convert <- function(info_txt_path, table_txt_path, spectrum_txt_path = NULL, imzML_path = NULL, file_name = NULL)
 {
   #Path work
   info_txt_path <- path.expand(info_txt_path) #path expansion to ensure proper work
   table_txt_path <- path.expand(table_txt_path)
-  spectrum_txt_path <- path.expand(spectrum_txt_path)
+
   
   if(is.null(file_name))
   {
     file_name <- unlist(strsplit(basename(table_txt_path), split = ".txt"))
   }
+  
+  if(is.null(spectrum_txt_path))
+  {
+    spectrum_txt_path <- table_txt_path
+  } else
+    {
+      spectrum_txt_path <- path.expand(spectrum_txt_path)
+    }
 
   if(is.null(imzML_path))
   {
@@ -90,7 +98,7 @@ FIVE_convert <- function(info_txt_path, table_txt_path, spectrum_txt_path, imzML
 
 #' Gives clean format to the raw FIVE text format.
 #' 
-#' @param raw_five data frame containing the raw data from the txt file.
+#' @param raw_five data frame containing the raw data from the text file.
 #'
 #' @return  clean data. 
 #' 
@@ -103,11 +111,11 @@ five_raw_2_clean <- function(raw_data, info, spect)
   #Motor and relative coordenates
   number_pixels <- as.numeric(info[10]) * as.numeric(info[11])
   pixel_size <- as.numeric(info[12])
-  rel_coords <- list(x = rep(1:as.numeric(info[10]), each = as.numeric(info[10])),
-                     y = rep(1:as.numeric(info[11]), times = as.numeric(info[11])))
+  rel_coords <- list(x = rep(1:as.numeric(info[10]), each = as.numeric(info[11])),
+                     y = rep(1:as.numeric(info[11]), times = as.numeric(info[10])))
   
-  motor_coords <- list(x = rep(as.numeric(info[14])*(1+(0:(as.numeric(info[10])-1))), each = as.numeric(info[10])),
-                     y = rep(as.numeric(info[15])*(1+(0:(as.numeric(info[10])-1))), times = as.numeric(info[11])))
+  motor_coords <- list(x = rep(as.numeric(info[14])*(1+(0:(as.numeric(info[10])-1))), each = as.numeric(info[11])),
+                       y = rep(as.numeric(info[15])*(1+(0:(as.numeric(info[11])-1))), times = as.numeric(info[10])))
   
   
   #Intensity data filling
@@ -127,5 +135,9 @@ five_raw_2_clean <- function(raw_data, info, spect)
   return(clean_data)
 }
 
+
+
+
+#' 
 
 
