@@ -18,10 +18,11 @@
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ############################################################################
 
-#' FIVE_convert
+
+#' Converter from FIVE(WiTec) text format to imzML.
 #' 
-#' Converts a txt files exported using WiRe 5.2 from Renishaw raman instruments and transforms it into an imzML file. The name
-#' of the imzML file is going to be the same as the txt file. Only WiRe 5.2 txt files have been tested. 
+#' Converts a text files exported using FIVE 5.1 from WiTec raman instruments and transforms it into an imzML file. The name
+#' of the imzML file is going to be the same as the table txt file. Only FIVE 5.1 text files have been tested. 
 #' 
 #' @param info_txt_path path to the txt file contaiting the information of the adquisition.
 #' @param table_txt_path path to the txt file contaiting all spectra as a table.
@@ -29,7 +30,7 @@
 #' @param imzML_path path to the folder where the imzML file is going to be stored. By default the same as the table text file.
 #' @param file_name name of the imzML file. By default the same as the table text file.
 #'
-#' @return  TRUE if everything is alright.
+#' @return  complete path of the imzML file.
 #'
 #' @export
 #'
@@ -86,15 +87,15 @@ FIVE_convert <- function(info_txt_path, table_txt_path, spectrum_txt_path, imzML
 }
 
 
-#' five_raw_2_clean
+
+#' Gives clean format to the raw FIVE text format.
 #' 
 #' @param raw_five data frame containing the raw data from the txt file.
 #'
-#' @return  rearranged data to fit the processing pipeline. 
+#' @return  clean data. 
 #' 
 five_raw_2_clean <- function(raw_data, info, spect)
 {
-
   #Raman Shift Axis
   raman_shift <- spect[,1]
   band_length <- length(raman_shift)

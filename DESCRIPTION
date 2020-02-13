@@ -1,13 +1,13 @@
 Package: Raman2imzML
 Type: Package
 Title: Raman imaging Tools
-Version: 1.0
+Version: 1.1
 Date: 2020-02-03
 Author: Lluc Semente Fernandez [aut]
 Authors@R: person("Lluc", "Semente",
         email="lluc.semente@urv.cat", role=c("aut"))
 Maintainer: Lluc Semente<lluc.semente@urv.cat>
-Description: Reads .txt files from Renishaw Raman instruments and converts them into .imzML files. The imzML parser source
+Description: Reads .txt files from Renishaw and WiTec Raman instruments and converts them into .imzML files. The imzML parser source
             code comes from the open-source package rMSI.
 License: GPL3
 LazyData: TRUE

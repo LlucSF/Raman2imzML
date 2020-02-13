@@ -18,7 +18,8 @@
 #     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 ############################################################################
 
-#' WiRe_convert
+
+#' Converter from WiRe(Renishaw) text format to imzML. 
 #' 
 #' Converts a txt files exported using WiRe 5.2 from Renishaw raman instruments and transforms it into an imzML file. The name
 #' of the imzML file is going to be the same as the txt file. Only WiRe 5.2 txt files have been tested. 
@@ -26,7 +27,8 @@
 #' @param txt_path path to the txt file.
 #' @param imzML_path path to the folder where the imzML file is going to be stored. By default the same as the text file.
 #' @param file_name name of the imzML file. By default the same as txt file.
-#' @return  TRUE if everything is alright.
+#' 
+#' @return  complete path of the imzML file.
 #'
 #' @export
 #'
@@ -77,11 +79,12 @@ WiRe_convert <- function(txt_path, imzML_path = NULL, file_name = NULL)
 }
 
 
-#' WiRe_raw_2_clean
+
+#' Gives clean format to the raw WiRe text format.
 #' 
 #' @param raw_data data frame containing the raw data from the txt file.
 #'
-#' @return  rearranged data to fit the processing pipeline. 
+#' @return  clean data. 
 #' 
 wire_raw_2_clean <- function(raw_data)
 {
