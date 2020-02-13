@@ -67,7 +67,7 @@ clean_2_offsetMatrix <- function(clean_data)
   offMat <- list()
   offMat$UUID <- clean_data$hash$uuid
   offMat$SHA <- clean_data$hash$sha
-  offMat$MD5 <-  NULL
+  offMat$MD5 <- ""
   offMat$continuous_mode <- TRUE
   offMat$compression_mz <- FALSE
   offMat$compression_int <- FALSE
