@@ -27,7 +27,7 @@ devtools::install_github("LlucSF/Raman2imzML")
 
 The converter currently supports two types of text file formats comming from Renishaw and WiTec.
 
-####WiRe 5.2
+#### WiRe 5.2
 To convert a WiRe txt file into an imzML just do as follows in your R session terminal or script:
 
 ```
@@ -42,7 +42,7 @@ Raman2imzML::WiRe_convert(txt_path, imzML_path)
 Raman2imzML::WiRe_convert(txt_path)
 ```
 
-####FIVE 5.1
+#### FIVE 5.1
 To transform FIVE data into an imzML you first need to generate three diferent text files. One containing the information of a single spectrum, one containing the run info and another containing the whole imaging data table.
 
 To convert the txt files into an imzML just do as follows in your R session terminal or script:
