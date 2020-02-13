@@ -52,12 +52,13 @@ To convert the txt files into an imzML just do as follows in your R session term
 info_txt_path <- "~/path/to/info/txt/file.txt"
 table_txt_path <- "~/path/to/table/txt/file.txt"
 spectrum_txt_path <- "~/path/to/spectrum/txt/file.txt"
+imzML_path <- "~/path/to/imzML/folder/"
 
 #Converter call
-Raman2imzML::FIVE_convert(info_txt_path,table_txt_path,spectrum_txt_path, imzML_path) 
+Raman2imzML::FIVE_convert(info_txt_path, table_txt_path, spectrum_txt_path, imzML_path) 
 
 #You can also just input the txt files path and the imzML file is going to be created in the same folder as the table file
-Raman2imzML::FIVE_convert((info_txt_path,table_txt_path,spectrum_txt_path)
+Raman2imzML::FIVE_convert(info_txt_path, table_txt_path, spectrum_txt_path)
 ```
 
 Two files are going to appear in the specifed imzML folder. The .imzML, which contains the metadata, and the .ibd, which is a binary file containing the data itself. More information on the imzML format [here](https://ms-imaging.org/wp/imzml/).
