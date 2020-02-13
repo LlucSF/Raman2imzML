@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 In order to install R packages from GitHub you first need to install the R package "devtools".
 To do so, open an R session and type the following code in the terminal:
 
-```
+```R
 install.packages("devtools")
 ```
 
@@ -19,7 +19,7 @@ install.packages("devtools")
 
 To install the package write the following line in your R session terminal:
 
-```
+```R
 devtools::install_github("LlucSF/Raman2imzML")
 ```
 
@@ -30,7 +30,7 @@ The converter currently supports two types of text file formats comming from Ren
 #### WiRe 5.2
 To convert a WiRe txt file into an imzML just do as follows in your R session terminal or script:
 
-```
+```R
 #Linux systems
 txt_path <- "~/path/to/txt/file.txt"
 imzML_path <- "~/path/to/imzML/folder/"
@@ -47,7 +47,7 @@ To transform FIVE data into an imzML you first need to generate three diferent t
 
 To convert the txt files into an imzML just do as follows in your R session terminal or script:
 
-```
+```R
 #Linux systems
 info_txt_path <- "~/path/to/info/txt/file.txt"
 table_txt_path <- "~/path/to/table/txt/file.txt"
