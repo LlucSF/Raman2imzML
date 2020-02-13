@@ -2,5 +2,6 @@
 
 export(FIVE_convert)
 export(WiRe_convert)
+import(Rcpp)
 importFrom(Rcpp,evalCpp)
-useDynLib(Raman2imzML, .registration = TRUE)
+useDynLib(Raman2imzML)

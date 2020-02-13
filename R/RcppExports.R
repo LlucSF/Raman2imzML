@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 CimzMLParse <- function(xml_path) {
-    .Call(`_Raman2imzML_CimzMLParse`, xml_path)
+    .Call('_Raman2imzML_CimzMLParse', PACKAGE = 'Raman2imzML', xml_path)
 }
 
 CimzMLStore <- function(fname, imgInfo) {
-    .Call(`_Raman2imzML_CimzMLStore`, fname, imgInfo)
+    .Call('_Raman2imzML_CimzMLStore', PACKAGE = 'Raman2imzML', fname, imgInfo)
 }
 
