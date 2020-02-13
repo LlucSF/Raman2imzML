@@ -31,7 +31,7 @@ The converter currently supports two types of text file formats comming from Ren
 To convert a WiRe txt file into an imzML just do as follows in your R session terminal or script:
 
 ```R
-#Linux systems
+#Set paths
 txt_path <- "~/path/to/txt/file.txt"
 imzML_path <- "~/path/to/imzML/folder/"
 
@@ -48,7 +48,7 @@ To transform FIVE data into an imzML you first need to generate three diferent t
 To convert the txt files into an imzML just do as follows in your R session terminal or script:
 
 ```R
-#Linux systems
+#Set paths
 info_txt_path <- "~/path/to/info/txt/file.txt"
 table_txt_path <- "~/path/to/table/txt/file.txt"
 spectrum_txt_path <- "~/path/to/spectrum/txt/file.txt"
